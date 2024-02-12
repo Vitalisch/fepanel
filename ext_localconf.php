@@ -14,9 +14,9 @@ $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['fepanel'] = 'EXT:fepanel/Configur
    'Fepanel',
    'Settings',
     [
-        \Arcadia\Fepanel\Controller\SettingsController::class => 'addForm', 
+        \Arcadia\Fepanel\Controller\SettingsController::class => 'list, show, addForm, add',
     ],
     [
-        \Arcadia\Fepanel\Controller\SettingsController::class => 'addForm', 
+        \Arcadia\Fepanel\Controller\SettingsController::class => 'list, show, addForm, add',
     ]
 );

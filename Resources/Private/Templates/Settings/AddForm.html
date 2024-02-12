@@ -2,11 +2,11 @@
     <f:form action="">
         <div>
             <label for="exampleFormControlInput1" class="form-label">Enter Description off your Profile</label>
-            <f:form.textarea name="myTextArea" class="form-control" rows="3" value="" />
+            <f:form.textarea name="description" class="form-control" rows="3" value="" />
         </div>
         <div class="mt-2">
             <label class="form-label" for="customFile">Uploat Image</label>
-            <f:form.upload name="file" id="customFile" class="form-control"/>
+            <f:form.upload name="profileImage" id="customFile" class="form-control"/>
         </div>
         <div class="card mt-2">
             <div class="card-body">
@@ -21,9 +21,9 @@
                 </div>
                 <div class="mt-2">
                     <label for="colorPicker">Choose Button color:</label>
-                    <input type="color" id="color-picker-1" class="mx-auto name="color" value="{yourModel.color}" />
+                    <input type="color" id="color-picker-1" class="mx-auto" name="color" value="{yourModel.color}" />
                 </div>
-            </div> 
+            </div>
         </div>
         <div class="mt-2">
             <label for="rangeInput">Select brightness</label>

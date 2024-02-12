@@ -1,0 +1,6 @@
+<f:debug>{_all}</f:debug>
+<ul>
+    <f:for as="setting" each="{settings}">
+        <li><f:link.action pageUid="9" action="show" arguments="{setting: setting}">{setting.title}</f:link.action></li>
+    </f:for>
+</ul>
