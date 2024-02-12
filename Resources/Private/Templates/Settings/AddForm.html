@@ -1,0 +1,33 @@
+<div class="mb-3">
+    <f:form action="">
+        <div>
+            <label for="exampleFormControlInput1" class="form-label">Enter Description off your Profile</label>
+            <f:form.textarea name="myTextArea" class="form-control" rows="3" value="" />
+        </div>
+        <div class="mt-2">
+            <label class="form-label" for="customFile">Uploat Image</label>
+            <f:form.upload name="file" id="customFile" class="form-control"/>
+        </div>
+        <div class="card mt-2">
+            <div class="card-body">
+                <h2>Add Url</h2>
+                <div>
+                    <label for="exampleFormControlInput1" class="form-label">Enter Title</label>
+                    <f:form.textfield type="textfield" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="myTextBox" />
+                </div>
+                <div class="mt-2">
+                    <label for="exampleFormControlInput1" class="form-label">Enter Link</label>
+                    <f:form.textfield type="Url" class="form-control" id="exampleFormControlInput1" placeholder="Url" name="myTextBox" />
+                </div>
+                <div class="mt-2">
+                    <label for="colorPicker">Choose Button color:</label>
+                    <input type="color" id="color-picker-1" class="mx-auto name="color" value="{yourModel.color}" />
+                </div>
+            </div> 
+        </div>
+        <div class="mt-2">
+            <label for="rangeInput">Select brightness</label>
+            <f:form.textfield type="range" id="rangeInput" class="form-range" name="rangeValue" value="{yourModel.rangeValue}" />
+        </div>
+    </f:form>
+</div>
