@@ -1,33 +1,34 @@
-<div class="mb-3">
-    <f:form action="">
-        <div>
-            <label for="exampleFormControlInput1" class="form-label">Enter Description off your Profile</label>
-            <f:form.textarea name="description" class="form-control" rows="3" value="" />
-        </div>
+<f:debug>{_all}</f:debug>
+<div class="my-5">
+    <f:form action="add" name="setting" object="{setting}" arguments="{setting: setting}" enctype="multipart/form-data">
+
+        <f:form.hidden property="user" value="{userUid}" />
+
         <div class="mt-2">
-            <label class="form-label" for="customFile">Uploat Image</label>
-            <f:form.upload name="profileImage" id="customFile" class="form-control"/>
+            <label for="description" class="form-label">Enter Description off your Profile</label>
+            <f:form.textarea property="description" id="description" class="form-control" rows="3" value="{setting.description}" />
         </div>
-        <div class="card mt-2">
-            <div class="card-body">
-                <h2>Add Url</h2>
-                <div>
-                    <label for="exampleFormControlInput1" class="form-label">Enter Title</label>
-                    <f:form.textfield type="textfield" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="myTextBox" />
-                </div>
-                <div class="mt-2">
-                    <label for="exampleFormControlInput1" class="form-label">Enter Link</label>
-                    <f:form.textfield type="Url" class="form-control" id="exampleFormControlInput1" placeholder="Url" name="myTextBox" />
-                </div>
-                <div class="mt-2">
-                    <label for="colorPicker">Choose Button color:</label>
-                    <input type="color" id="color-picker-1" class="mx-auto" name="color" value="{yourModel.color}" />
-                </div>
+
+        <div class="mt-2">
+            <label class="form-label" for="profileImage">Upload Image</label>
+            <f:form.upload property="profileImage" id="profileImage" class="form-control" value="{setting.profileImage}"/>
+        </div>
+
+        <div class="card card-body mt-2">
+            <h2>Add Url</h2>
+            <div>
+                <label for="title" class="form-label">Enter Title</label>
+                <f:form.textfield property="title" id="title" class="form-control" value="{setting.title}" />
+            </div>
+            <div class="mt-2">
+                <label for="link" class="form-label">Enter Link</label>
+                <f:form.textfield type="url" property="link" id="link" class="form-control" value="{setting.link}" />
             </div>
         </div>
+
         <div class="mt-2">
-            <label for="rangeInput">Select brightness</label>
-            <f:form.textfield type="range" id="rangeInput" class="form-range" name="rangeValue" value="{yourModel.rangeValue}" />
+            <f:form.submit class="btn btn-primary" value="Send" />
         </div>
+
     </f:form>
 </div>

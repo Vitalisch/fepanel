@@ -14,6 +14,11 @@ class Setting extends AbstractEntity
     /**
      * @var string
      */
+    protected string $link = '';
+
+    /**
+     * @var string
+     */
     protected string $description = '';
 
     /**
@@ -40,6 +45,22 @@ class Setting extends AbstractEntity
     public function setTitle(string $title): void
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLink(): string
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param string $link
+     */
+    public function setLink(string $link): void
+    {
+        $this->link = $link;
     }
 
     /**

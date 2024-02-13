@@ -203,10 +203,13 @@ config {
 }
 
 plugin.tx_fepanel {
-  view {
-        layoutRootPaths.10 = EXT:template/Resources/Private/Layouts/Fepanel/
-        partialRootPaths.10 = EXT:template/Resources/Private/Partials/Fepanel/
-        templateRootPaths.10 = EXT:template/Resources/Private/Templates/Fepanel/
-        defaultPid = auto
+    persistence {
+        storagePid = 14
+    }
+    view {
+        #layoutRootPaths.10 = EXT:template/Resources/Private/Layouts/Fepanel/
+        #partialRootPaths.10 = EXT:template/Resources/Private/Partials/Fepanel/
+        #templateRootPaths.10 = EXT:template/Resources/Private/Templates/Fepanel/
+        #defaultPid = 14
     }
 }

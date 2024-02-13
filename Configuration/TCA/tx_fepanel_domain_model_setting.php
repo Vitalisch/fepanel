@@ -63,16 +63,24 @@ return [
                 'max' => 255,
             ],
         ],
+        'link' => [
+            'label' => 'Link',
+            'config' => [
+                'type' => 'input',
+                'max' => 255,
+            ],
+        ],
     ],
     'types' => [
         0 => [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     hidden,
-                    title,
+                    user
                     description,
                     profile_image,
-                    user
+                    title,
+                    link,
             ',
         ],
     ],
