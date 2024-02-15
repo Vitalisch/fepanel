@@ -14,7 +14,7 @@ class Setting extends AbstractEntity
     /**
      * @var string
      */
-    protected string $link = '';
+    protected string $links = '';
 
     /**
      * @var string
@@ -48,19 +48,19 @@ class Setting extends AbstractEntity
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getLink(): string
+    public function getLinks(): array
     {
-        return $this->link;
+        return unserialize($this->links);
     }
 
     /**
-     * @param string $link
+     * @param array $links
      */
-    public function setLink(string $link): void
+    public function setLinks(array $links): void
     {
-        $this->link = $link;
+        $this->links = serialize($links);
     }
 
     /**

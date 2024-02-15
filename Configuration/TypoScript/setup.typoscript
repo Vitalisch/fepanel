@@ -144,7 +144,7 @@ page {
     }
 
     includeCSS {
-        fepanel_layout = EXT:fepanel/Resources/Public/Css/layout.min.css
+        fepanel_layout = EXT:fepanel/Resources/Public/Css/layout.css
     }
 
     includeJSLibs {

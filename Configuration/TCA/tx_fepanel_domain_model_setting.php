@@ -19,13 +19,13 @@ return [
         'typeicon_classes' => [
             'default' => 'actions-check'
         ],
-        'searchFields' => 'uid,title',
+        'searchFields' => 'uid, title, links',
     ],
     'interface' => [
         'showRecordFieldList' => '
             hidden,
-            title,
             description,
+            links
         ',
     ],
     'columns' => [
@@ -33,6 +33,7 @@ return [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
                 'default' => 0,
             ],
         ],
@@ -63,11 +64,10 @@ return [
                 'max' => 255,
             ],
         ],
-        'link' => [
-            'label' => 'Link',
+        'links' => [
+            'label' => 'Links',
             'config' => [
-                'type' => 'input',
-                'max' => 255,
+                'type' => 'text',
             ],
         ],
     ],
@@ -76,11 +76,10 @@ return [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     hidden,
-                    user
+                    user,
                     description,
                     profile_image,
-                    title,
-                    link,
+                    links,
             ',
         ],
     ],

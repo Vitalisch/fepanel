@@ -1,4 +1,3 @@
-<f:debug>{_all}</f:debug>
 <div class="my-5">
     <f:form action="add" name="setting" object="{setting}" arguments="{setting: setting}" enctype="multipart/form-data">
 
@@ -17,12 +16,12 @@
         <div class="card card-body mt-2">
             <h2>Add Url</h2>
             <div>
-                <label for="title" class="form-label">Enter Title</label>
-                <f:form.textfield property="title" id="title" class="form-control" value="{setting.title}" />
+                <label for="title0" class="form-label">Enter Title</label>
+                <f:form.textfield property="links[0][title]" id="title0" class="form-control" value="{setting.links.0.title}" />
             </div>
             <div class="mt-2">
-                <label for="link" class="form-label">Enter Link</label>
-                <f:form.textfield type="url" property="link" id="link" class="form-control" value="{setting.link}" />
+                <label for="link0" class="form-label">Enter Link</label>
+                <f:form.textfield type="url" property="links[0][link]" id="link0" class="form-control" value="{setting.links.0.link}" />
             </div>
         </div>
 
@@ -30,7 +29,7 @@
             <f:form.submit class="btn btn-primary" value="Send" />
         </div>
 
-        <!-- Vertically centered modal -->
+        <f:comment><!-- Vertically centered modal --></f:comment>
         <div class="modal-dialog modal-dialog-centered">
             ...
         </div>
