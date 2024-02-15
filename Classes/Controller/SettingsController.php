@@ -66,6 +66,13 @@ class SettingsController extends ActionController
      */
     public function addAction(Setting $setting): ResponseInterface
     {
+        $arguments = $this->request->getArguments();
+
+        $setting->setLinks([
+            'title' => $arguments['title'],
+            'url' => $arguments['url']
+        ]);
+
         $this->settingRepository->add($setting);
         $this->persistenceManager->persistAll();
 

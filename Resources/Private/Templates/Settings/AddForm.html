@@ -16,12 +16,20 @@
         <div class="card card-body mt-2">
             <h2>Add Url</h2>
             <div>
-                <label for="title0" class="form-label">Enter Title</label>
-                <f:form.textfield property="links[0][title]" id="title0" class="form-control" value="{setting.links.0.title}" />
+                <label for="title0" class="form-label">Enter Title1</label>
+                <f:form.textfield name="title[]" id="title0" class="form-control" value="{setting.links.title.0}" />
             </div>
             <div class="mt-2">
-                <label for="link0" class="form-label">Enter Link</label>
-                <f:form.textfield type="url" property="links[0][link]" id="link0" class="form-control" value="{setting.links.0.link}" />
+                <label for="url0" class="form-label">Enter Link1</label>
+                <f:form.textfield type="url" name="url[]" id="url0" class="form-control" value="{setting.links.url.0}" />
+            </div>
+            <div>
+                <label for="title1" class="form-label">Enter Title2</label>
+                <f:form.textfield name="title[]" id="title1" class="form-control" value="{setting.links.title.1}" />
+            </div>
+            <div class="mt-2">
+                <label for="url1" class="form-label">Enter Link2</label>
+                <f:form.textfield type="url" name="url[]" id="url1" class="form-control" value="{setting.links.url.1}" />
             </div>
         </div>
 

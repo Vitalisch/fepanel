@@ -1,0 +1,24 @@
+routeEnhancers:
+    SettingPlugin:
+        type: Extbase
+        limitToPages:
+            - 9
+        extension: Fepanel
+        plugin: Settings
+        routes:
+            -   routePath: '/'
+                _controller: 'Settings::addForm'
+            -   routePath: '/add/{setting}'
+                _controller: 'Settings::add'
+                _arguments:
+                    setting: setting
+            -   routePath: '/show/{setting}'
+                _controller: 'Settings::show'
+                _arguments:
+                    setting: setting
+        defaultController: 'Settings::addForm'
+        aspects:
+            course_slug:
+                type: PersistedAliasMapper
+                tableName: tx_fepanel_domain_model_setting
+                routeFieldName: uid

@@ -52,7 +52,7 @@ class Setting extends AbstractEntity
      */
     public function getLinks(): array
     {
-        return unserialize($this->links);
+        return unserialize($this->links) ? unserialize($this->links) : [];
     }
 
     /**
