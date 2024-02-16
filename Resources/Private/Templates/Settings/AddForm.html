@@ -3,6 +3,11 @@
 
         <f:form.hidden property="user" value="{userUid}" />
 
+        <div>
+            <label for="name" class="form-label">Enter Name</label>
+            <f:form.textfield name="name" id="name" class="form-control" value="{setting.name}" />
+        </div>
+
         <div class="mt-2">
             <label for="description" class="form-label">Enter Description off your Profile</label>
             <f:form.textarea property="description" id="description" class="form-control" rows="3" value="{setting.description}" />

@@ -37,6 +37,12 @@ return [
                 'default' => 0,
             ],
         ],
+        'name' => [
+            'label' => 'Name',
+            'config' => [
+                'type' => 'text',
+            ],
+        ],
         'title' => [
             'label' => 'Title',
             'config' => [
