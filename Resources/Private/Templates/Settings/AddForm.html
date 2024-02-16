@@ -15,7 +15,7 @@
 
         <div id="formContainer">
             <div class="card card-body mt-2">
-                <h2>Add Url</h2>
+                <h2>add Link</h2>
                 <div>
                     <label for="title0" class="form-label">Enter Title</label>
                     <f:form.textfield name="title[]" id="title0" class="form-control" value="{setting.links.title.0}" />
@@ -23,11 +23,12 @@
                 <div class="mt-2">
                     <label for="url0" class="form-label">Enter Link</label>
                     <f:form.textfield type="url" name="url[]" id="url0" class="form-control" value="{setting.links.url.0}" />
+                    <button type="button" class="btn btn-danger" onclick="removeCard(this)">Delete</button>
                 </div>
             </div>
         </div>
 
-        <button class="btn btn-primary" onclick="addCard()">Add More</button>
+        <button type="button" class="btn btn-primary" onclick="addCard()">add Link</button>
 
         <script>
             let cardCount = 1;
@@ -38,19 +39,25 @@
                 const newCard = document.createElement('div');
                 newCard.className = 'card card-body mt-2';
                 newCard.innerHTML = `
-                                    <h2>Add Url</h2>
-                                    <div>
-                                        <label for="title${cardCount}" class="form-label">Enter Title</label>
-                                        <f:form.textfield name="title[]" id="title${cardCount}" class="form-control" value="{setting.links.title.${cardCount}}" />
-                                    </div>
-                                    <div class="mt-2">
-                                        <label for="url${cardCount}" class="form-label">Enter Link</label>
-                                        <f:form.textfield type="url" name="url[]" id="url${cardCount}" class="form-control" value="{setting.links.url.${cardCount}}" />
-                                    </div>
-                                `;
+                    <h2>add Second Link</h2>
+                    <div>
+                        <label for="title${cardCount}" class="form-label">Enter Title</label>
+                        <f:form.textfield name="title[]" id="title${cardCount}" class="form-control" value="{setting.links.title.${cardCount}}" />
+                    </div>
+                    <div class="mt-2">
+                        <label for="url${cardCount}" class="form-label">Enter Link</label>
+                        <f:form.textfield type="url" name="url[]" id="url${cardCount}" class="form-control" value="{setting.links.url.${cardCount}}" />
+                        <button type="button" class="btn btn-danger" onclick="removeCard(this)">Delete</button>
+                    </div>
+                `;
 
                 formContainer.appendChild(newCard);
                 cardCount++;
+            }
+
+            function removeCard(button) {
+                const cardToRemove = button.closest('.card');
+                cardToRemove.remove();
             }
         </script>
 
