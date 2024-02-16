@@ -13,7 +13,7 @@
             <h2 class="card-title mt-2">Lux</h2>
             <h6 class="card-subtitle mb-2 text-body-secondary">{setting.description}</h6>
             <f:for as="url" each="{setting.links.url}" iteration="iterator">
-                <div style="color: White;">
+                <div style="color: White;" class="mt-2">
                     <a href="{url}" class="btn btn-secondary mt-2 glow" style="width:100%; border-radius: 20px;">{setting.links.title.{iterator.index}}</a>
                 </div>
             </f:for>
