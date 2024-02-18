@@ -5,8 +5,7 @@ CREATE TABLE tx_fepanel_domain_model_setting (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	title VARCHAR(50) NOT NULL DEFAULT '',
-    name TEXT,
+    name VARCHAR(50) NOT NULL DEFAULT '',
 	description TEXT,
 	profile_image VARCHAR(255) DEFAULT '',
 	links TEXT,

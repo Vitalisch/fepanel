@@ -40,12 +40,6 @@ return [
         'name' => [
             'label' => 'Name',
             'config' => [
-                'type' => 'text',
-            ],
-        ],
-        'title' => [
-            'label' => 'Title',
-            'config' => [
                 'type' => 'input',
                 'max' => 50,
             ],
