@@ -5,7 +5,7 @@ defined('TYPO3') or die('Access denied.');
 return [
     'ctrl' => [
         'title' => 'Settings',
-        'label' => 'title',
+        'label' => 'name',
         'sortby' => 'sorting',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -19,11 +19,12 @@ return [
         'typeicon_classes' => [
             'default' => 'actions-check'
         ],
-        'searchFields' => 'uid, title, links',
+        'searchFields' => 'uid, name, links',
     ],
     'interface' => [
         'showRecordFieldList' => '
             hidden,
+            name,
             description,
             links
         ',
@@ -37,11 +38,29 @@ return [
                 'default' => 0,
             ],
         ],
+//        'name' => [
+//            'label' => 'Name',
+//            'config' => [
+//                'type' => 'input',
+//                'max' => 50,
+//                'required' => true
+//            ],
+//        ],
         'name' => [
-            'label' => 'Name',
+            'label' => 'Slug',
             'config' => [
-                'type' => 'input',
-                'max' => 50,
+                'type' => 'slug',
+                'size' => 50,
+                'generatorOptions' => [
+                    'fields' => [
+                        'pid',
+                    ],
+                    'fieldSeparator' => '/',
+                    'prefixParentPageSlug' => true,
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => '',
             ],
         ],
         'description' => [
@@ -53,8 +72,9 @@ return [
         'profile_image' => [
             'label' => 'Profile Image',
             'config' => [
-                'type' => 'input',
-                'max' => 255,
+                'type' => 'file',
+                'allowed' => 'common-media-types',
+                'maxitems' => 6,
             ],
         ],
         'user' => [
@@ -76,6 +96,7 @@ return [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     hidden,
+                    name,
                     user,
                     description,
                     profile_image,

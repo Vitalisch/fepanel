@@ -8,17 +8,17 @@ routeEnhancers:
         routes:
             -   routePath: '/'
                 _controller: 'Settings::addForm'
-            -   routePath: '/add/{setting}'
+            -   routePath: '/{setting}/add'
                 _controller: 'Settings::add'
                 _arguments:
                     setting: setting
-            -   routePath: '/show/{setting}'
+            -   routePath: '/{setting}/show'
                 _controller: 'Settings::show'
                 _arguments:
                     setting: setting
         defaultController: 'Settings::addForm'
         aspects:
-            course_slug:
+            setting:
                 type: PersistedAliasMapper
                 tableName: tx_fepanel_domain_model_setting
-                routeFieldName: uid
+                routeFieldName: name

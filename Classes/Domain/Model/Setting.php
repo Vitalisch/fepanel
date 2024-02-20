@@ -2,7 +2,10 @@
 
 namespace Arcadia\Fepanel\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 
 class Setting extends AbstractEntity
 {
@@ -27,9 +30,10 @@ class Setting extends AbstractEntity
     protected string $description = '';
 
     /**
-     * @var string
+     * @var LazyLoadingProxy|FileReference|null
+     * @Lazy
      */
-    protected string $profileImage = '';
+    protected LazyLoadingProxy|FileReference|null $profileImage;
 
     /**
      * @var int|null
@@ -95,17 +99,24 @@ class Setting extends AbstractEntity
     }
 
     /**
-     * @return string
+     * @return FileReference|null
      */
-    public function getProfileImage(): string
+    public function getProfileImage(): ?FileReference
     {
+        if ($this->profileImage instanceof LazyLoadingProxy) {
+            /** @var FileReference $profileImage */
+            $profileImage = $this->profileImage->_loadRealInstance();
+            $this->profileImage = $profileImage;
+        }
+
         return $this->profileImage;
     }
 
     /**
-     * @param string $profileImage
+     * @param FileReference $profileImage
+     * @return void
      */
-    public function setProfileImage(string $profileImage): void
+    public function setProfileImage(FileReference $profileImage): void
     {
         $this->profileImage = $profileImage;
     }

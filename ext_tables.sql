@@ -7,7 +7,7 @@ CREATE TABLE tx_fepanel_domain_model_setting (
 
     name VARCHAR(50) NOT NULL DEFAULT '',
 	description TEXT,
-	profile_image VARCHAR(255) DEFAULT '',
+  	profile_image int(11) unsigned DEFAULT '0' NOT NULL,
 	links TEXT,
 	user INT(11) NOT NULL,
 
