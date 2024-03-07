@@ -8,11 +8,11 @@ routeEnhancers:
         routes:
             -   routePath: '/'
                 _controller: 'Settings::addForm'
-            -   routePath: '/{setting}/add'
+            -   routePath: '/add/{setting}'
                 _controller: 'Settings::add'
                 _arguments:
                     setting: setting
-            -   routePath: '/{setting}/show'
+            -   routePath: '/show/{setting}'
                 _controller: 'Settings::show'
                 _arguments:
                     setting: setting
@@ -21,4 +21,4 @@ routeEnhancers:
             setting:
                 type: PersistedAliasMapper
                 tableName: tx_fepanel_domain_model_setting
-                routeFieldName: name
+                routeFieldName: uid
