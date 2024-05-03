@@ -74,7 +74,7 @@ return [
             'config' => [
                 'type' => 'file',
                 'allowed' => 'common-media-types',
-//                'maxitems' => 6,
+                'maxitems' => 6,
             ],
         ],
         'user' => [

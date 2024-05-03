@@ -43,34 +43,25 @@ class SettingsController extends ActionController
     }
 
     /**
-     * @param Setting|null $setting
+     * @param Setting $setting
      * @return ResponseInterface
-     * @throws AspectNotFoundException
      */
-    public function showAction(Setting $setting = null): ResponseInterface
+    public function showAction(Setting $setting): ResponseInterface
     {
-        if ($setting === null) {
-            $userUid = $this->context->getPropertyFromAspect('frontend.user', 'id');
-            $setting = $this->settingRepository->findOneByUser($userUid);
-        }
-
         $this->view->assign('setting', $setting);
         return $this->htmlResponse();
     }
 
     /**
-     * @param Setting|null $setting
      * @return ResponseInterface
      * @throws AspectNotFoundException
      */
-    public function addFormAction(Setting $setting = null): ResponseInterface
+    public function addFormAction(): ResponseInterface
     {
-        if ($setting === null) {
-            $userUid = $this->context->getPropertyFromAspect('frontend.user', 'id');
-            $setting = $this->settingRepository->findOneByUser($userUid);
-        }
+        $userUid = $this->context->getPropertyFromAspect('frontend.user', 'id');
+        $setting = $this->settingRepository->findOneByUser($userUid);
 
-        $this->view->assign('userUid', $userUid ?? null);
+        $this->view->assign('userUid', $userUid);
         $this->view->assign('setting', $setting);
 
         return $this->htmlResponse();
@@ -85,35 +76,32 @@ class SettingsController extends ActionController
      */
     public function addAction(Setting $setting): ResponseInterface
     {
-        if (isset($_FILES['file']['name']) && $_FILES['file']['name'] !== '') {
-            $originalFilePath = $_FILES['file']['tmp_name'];
-            $newFileName = $_FILES['file']['name'];
+        $originalFilePath = $_FILES['file']['tmp_name'];
+        $newFileName = $_FILES['file']['name'];
 
-            $storage = $this->resourceFactory->getDefaultStorage();
-            $targetFolder = $storage->getFolder('user_upload/');
-            $file = $storage->addFile($originalFilePath, $targetFolder, $newFileName, DuplicationBehavior::REPLACE);
-            $fileReference = $this->resourceFactory->createFileReferenceObject(
-                [
-                    'uid_local' => $file->getUid(),
-                    'uid_foreign' => uniqid('NEW_'),
-                    'uid' => uniqid('NEW_'),
-                    'crop' => null,
-                ]
-            );
-            /** @var FileReference $modelFileReference */
-            $modelFileReference = GeneralUtility::makeInstance(FileReference::class);
-            $modelFileReference->setOriginalResource($fileReference);
-            $setting->setProfileImage($modelFileReference);
-        }
+        $storage = $this->resourceFactory->getDefaultStorage();
+        $targetFolder = $storage->getFolder('user_upload/');
+
+        $file = $storage->addFile($originalFilePath, $targetFolder, $newFileName, DuplicationBehavior::REPLACE);
+        $fileReference = $this->resourceFactory->createFileReferenceObject(
+            [
+                'uid_local' => $file->getUid(),
+                'uid_foreign' => uniqid('NEW_'),
+                'uid' => uniqid('NEW_'),
+                'crop' => null,
+            ]
+        );
+        /** @var FileReference $modelFileReference */
+        $modelFileReference = GeneralUtility::makeInstance(FileReference::class);
+        $modelFileReference->setOriginalResource($fileReference);
+        $setting->setProfileImage($modelFileReference);
 
         $arguments = $this->request->getArguments();
 
-        if (isset($arguments['title']) && isset($arguments['url'])) {
-            $setting->setLinks([
-                'title' => $arguments['title'],
-                'url' => $arguments['url']
-            ]);
-        }
+        $setting->setLinks([
+            'title' => $arguments['title'],
+            'url' => $arguments['url']
+        ]);
 
         $this->settingRepository->add($setting);
         $this->persistenceManager->persistAll();

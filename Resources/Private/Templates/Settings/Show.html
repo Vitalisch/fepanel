@@ -3,11 +3,7 @@
         <img src="/typo3conf/ext/template/Resources/Public/Images/CardImages/Discord-server-neon-logo.png"
              class="card-img-top tree-image" style="border-top-left-radius: 30px; border-top-right-radius: 30px;"
              alt="...">
-
-        <f:if condition="{setting.profileImage}">
-            <f:image image="{setting.profileImage}" class="tree-profil img-thumbnail" />
-        </f:if>
-
+        <f:image image="{setting.profileImage}" class="tree-profil img-thumbnail" />
         <div class="card-body text-center">
             <br>
             <br>
@@ -21,7 +17,6 @@
             <a class="mt-2" href="https://lux-arcadia.de/login">
                 <h6 class="mt-3 card-subtitle mb-2 text-body-secondary">Create own Linktree! (Click Me)</h6>
             </a>
-            <f:link.action action="addForm">Edit</f:link.action>
         </div>
     </div>
 </div>
