@@ -1,5 +1,11 @@
 <?php
+
+use Arcadia\Fepanel\Controller\SettingsController;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+
 defined('TYPO3') or die('Access denied.');
+
 /***************
  * Add default RTE configuration
  */
@@ -8,15 +14,15 @@ $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['fepanel'] = 'EXT:fepanel/Configur
 /***************
  * PageTS
  */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:fepanel/Configuration/TsConfig/Page/All.tsconfig">');
+ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:fepanel/Configuration/TsConfig/Page/All.tsconfig">');
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+ExtensionUtility::configurePlugin(
    'Fepanel',
    'Settings',
     [
-        \Arcadia\Fepanel\Controller\SettingsController::class => 'addForm, list, show, add',
+        SettingsController::class => 'addForm, list, show, add',
     ],
     [
-        \Arcadia\Fepanel\Controller\SettingsController::class => 'addForm, list, show, add',
+        SettingsController::class => 'addForm, list, show, add',
     ]
 );
